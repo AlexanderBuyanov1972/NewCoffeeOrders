@@ -1,6 +1,5 @@
 (function (window) {
         let App = window.App || {};
-
         function Truck(id, orders) {
             this.id = id;
             this.orders = orders;
@@ -19,7 +18,6 @@
                 }
                 return false;
             }
-
             Truck.prototype.printOrders = function () {
                 console.log(`truck ${this.id} has following pending orders`);
                 this.orders.getAll().forEach((o) => {
