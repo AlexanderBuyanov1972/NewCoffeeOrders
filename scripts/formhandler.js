@@ -2,12 +2,13 @@
     function (window) {
         let App = window.App || {};
         let $ = window.jQuery;
+
         function FormHandler(selector) {
             this.$formElement = $(selector);
             if (!this.$formElement) {
                 throw Error("wrong selector");
             }
-            if (this.$formElement.length ===0) {
+            if (this.$formElement.length === 0) {
                 throw Error("does not look as a form");
             }
 
@@ -19,13 +20,21 @@
                             data[item.name] = item.value;
                         })
                         console.log(data);
-                    fn(data);
-                    this.reset();
-                    this.elements[0].focus();
+                        fn(data);
+                        this.reset();
+                        this.elements[0].focus();
                     }
                 );
             }
+
+            FormHandler.prototype.addEmailHandler = function (fn) {
+                this.$formElement.on('input', '[data-coffee-role="email"]',function (event) {
+                    this.setCustomValidity(fn(this.value));
+                })
+
+            }
         }
+
         App.FormHandler = FormHandler;
         window.App = App;
     })(window)

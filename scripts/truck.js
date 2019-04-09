@@ -20,8 +20,13 @@
             }
             Truck.prototype.printOrders = function () {
                 console.log(`truck ${this.id} has following pending orders`);
-                this.orders.getAll().forEach((o) => {
-                    console.log(o);
+                // this.orders.getAll().forEach((o) => {
+                //     console.log(o);
+                // })
+                this.orders.getAll(function (orders) {
+                    Object.values(orders).forEach(function (order) {
+                        console.log(order);
+                    })
                 })
             }
         }
