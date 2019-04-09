@@ -15,8 +15,7 @@ checkList.addHandler(function (emailAddress) {
 });
 
 formHandler.addEmailHandler(function (emailAddress) {
-    event.preventDefault();
-    return truck.orders.get(emailAddress) ? "email address already exists" : "";
+    return orders.get(emailAddress) ? "email address already exists" : "";
 
 });
 
