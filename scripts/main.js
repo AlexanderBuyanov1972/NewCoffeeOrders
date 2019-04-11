@@ -18,6 +18,8 @@ formHandler.addEmailHandler(function (emailAddress) {
     return orders.get(emailAddress) ? "email address already exists" : "";
 
 });
+
+
 let lastOrders = {};
 
 function displayAll() {
@@ -29,14 +31,11 @@ function displayAll() {
             })
             lastOrders = {...orders};
         }
-     })
+    })
 }
-
 displayAll();
-
-
 setInterval(function () {
-    displayAll(), 5000
+    displayAll(), 10000
 });
 
 
