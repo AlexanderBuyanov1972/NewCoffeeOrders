@@ -36,6 +36,10 @@
                 let $element = this.$checkListElement.find(`[value = "${emailAddress}"]`)
                     .closest('[data-coffee-order="checkbox"]').remove();
             }
+
+            CheckList.prototype.removeAll = function () {
+                this.$checkListElement.empty();
+            }
         }
 
         App.CheckList = CheckList;
