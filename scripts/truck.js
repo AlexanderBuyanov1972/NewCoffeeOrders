@@ -11,17 +11,12 @@
                 return this.orders.add(order.emailAddress, order);
             }
 
-            Truck.prototype.deliverOrder = function (email) {
-                const res = this.orders.remove(email);
-                if (res) {
-                    console.log("order has been delivered.");
-                    return true;
-                }
-                return false;
+            Truck.prototype.deliverOrder = function (emailAddress) {
+                return this.orders.remove(emailAddress);
             }
             Truck.prototype.printOrders = function () {
                 console.log(`truck ${this.id} has following pending orders`);
-                this.orders.getAll(function (orders) {
+                this.orders.getAll().then(function (orders) {
                     Object.values(orders).forEach(function (order) {
                         console.log(order);
                     })

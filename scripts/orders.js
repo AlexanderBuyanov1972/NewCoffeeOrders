@@ -2,13 +2,22 @@
         let App = window.App || {};
         function Orders() {
             this.data = {};
+
+            function createPromise(value){
+                return new Promise(function (resolve) {
+                    resolve(value);
+                })
+            }
+
             Orders.prototype.add = function (email, order) {
                 if (this.data[email]) {
-                    return false;
+                    return createPromise(false);
                 }
                 this.data[email] = order;
-                return true;
+                return createPromise(true);
             }
+
+
             Orders.prototype.get = function (email) {
                 if (this.data[email]) {
                     return this.data[email];
@@ -18,12 +27,12 @@
             Orders.prototype.remove = function (email) {
                 if (this.data[email]) {
                     delete this.data[email];
-                    return true;
+                    return createPromise(true);
                 }
-                return false;
+                return createPromise(false);
             }
             Orders.prototype.getAll = function () {
-                return Object.values(this.data);
+                return createPromise(Object.values(this.data));
             }
         }
         App.Orders = Orders;
