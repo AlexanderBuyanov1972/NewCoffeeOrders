@@ -5,28 +5,34 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/mystyles.css">
     <title>Title</title>
+    <style>
+        input:invalid {
+            border-color: red;
+        }
+    </style>
+
 </head>
 <body class="container">
 <div class="card">
     <div class="card-body">
         <form data-coffee-order="form">
             <div class="form-group">
-                <label for="coffeeOrder">CoffeeOrder</label>
-                <input id="coffeeOrder" type="text" class="form-control" name="coffee" autofocus required>
+                <label for="coffee">CoffeeOrder</label>
+                <input id="coffee" type="text" class="form-control" name="coffee" autofocus required>
             </div>
             <div class="form-group">
-                <label for="emailAddress">email</label>
-                <input id="emailAddress" type="email" class="form-control" name="emailAddress" dadta-coffee-role="email" required
+                <label for="email">email</label>
+                <input id="email" type="email" class="form-control" name="email" data-coffee-role="email" required
                        placeholder="name@telran.co.il">
             </div>
             <div class="form-group">
-                <label for="caffeineStrength">Caffeine Strength</label>
-                <input id="caffeineStrength" type="range" class="custom-range" name="strength" value="20">
+                <label for="strength">Caffeine Strength</label>
+                <input id="strength" type="range" class="custom-range" name="strength" value="20">
             </div>
             <div class="form-group">
                 <label for="flavor">Coffe Flavor</label>
                 <select class="form-control" id="flavor" name="flavor">
-                    <option value="">None</option>
+                    <option value="none">None</option>
                     <option value="caramel">Caramel</option>
                     <option value="vanilla">Vanilla</option>
                     <option value="mocha">Mocha</option>
@@ -55,11 +61,11 @@
     <div class="card-body">
         <h4>Pending orders</h4>
         <div data-coffee-order="checklist">
-<!--            <div class="form-check" data-coffee-order="checkbox">-->
-<!--                <label class="form-check-label">-->
-<!--                    <input class="form-check-input" type="checkbox" value="emailAddress">-->
-<!--                </label>-->
-<!--            </div>-->
+            <!--            <div class="form-check" data-coffee-order="checkbox">-->
+            <!--                <label class="form-check-label">-->
+            <!--                    <input class="form-check-input" type="checkbox" value="email">-->
+            <!--                </label>-->
+            <!--            </div>-->
         </div>
     </div>
 </div>
@@ -73,11 +79,11 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-<script src="scripts/orders.js"></script>
 <script src="scripts/remoteds.js"></script>
 <script src="scripts/checklist.js"></script>
-<script src="scripts/truck.js"></script>
 <script src="scripts/formhandler.js"></script>
+<script src="scripts/orders.js"></script>
+<script src="scripts/truck.js"></script>
 <script src="scripts/main.js"></script>
 </body>
 </html>
