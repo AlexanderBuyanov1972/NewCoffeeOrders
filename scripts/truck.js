@@ -8,9 +8,8 @@
         }
 
         Truck.prototype.createOrder = function (order) {
-            if (!order.email) {
+            if (!order.email)
                 throw Error('Email is not defined in order.');
-            }
             return this.orders.add(order.email, order);
         }
 
@@ -20,8 +19,8 @@
 
         Truck.prototype.printOrders = function () {
             console.log(`Truck id=${this.id} has following pending orders`);
-            this.orders.getAll(function (orders) {
-                Object.values(orders).forEach(function (order) {
+            this.orders.getAll().then(function (res) {
+                Object.values(res).forEach(function (order) {
                     console.log(order);
                 })
             });

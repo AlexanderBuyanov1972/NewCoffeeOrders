@@ -11,7 +11,7 @@
 
         RemoteDataStore.prototype.add = function (email, order) {
             return $.ajax({
-                url: this.serverUrl + '/order/add',
+                url: this.serverUrl + '/create',
                 type: 'POST',
                 data: JSON.stringify(order),
                 contentType: 'application/json'
@@ -20,13 +20,13 @@
 
         RemoteDataStore.prototype.remove = function (email) {
             return $.ajax({
-                url: this.serverUrl + '/order/remove?email = ' + encodeURIComponent(email),
+                url: this.serverUrl + '/delete?email = ' + encodeURIComponent(email),
                 type: 'DELETE'
             });
         }
 
         RemoteDataStore.prototype.getAll = function () {
-            return $.getJSON(this.serverUrl + '/orders');
+            return $.ajax({url: this.serverUrl + '/orders'});
         }
 
         RemoteDataStore.prototype.get = function (email) {

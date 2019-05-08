@@ -20,13 +20,16 @@
                 $(this).serializeArray().forEach(function (item) {
                     data[item.name] = item.value;
                 })
-                fn(data);
-                this.reset();
-                this.elements[0].focus();
+                fn(data).then(function () {
+                    this.reset();
+                    this.elements[0].focus();
+                }.bind(this)).catch(function () {
+                    alert("Server is not available");
+                });
             });
         }
-        FormHandler.prototype.addEmailHandler = function(fn){
-            this.$formElement.on('input','[data-coffee-role="email"]', function (event) {
+        FormHandler.prototype.addEmailHandler = function (fn) {
+            this.$formElement.on('input', '[data-coffee-role="email"]', function (event) {
                 this.setCustomValidity(fn(this.value));
             });
         }

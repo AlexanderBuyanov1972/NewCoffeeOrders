@@ -50,7 +50,11 @@
             this.$checkList.find(`[value="${email}"]`).closest("[data-coffee-order='checkbox']").remove();
         }
 
-      App.CheckList = CheckList;
+        CheckList.prototype.removeAllRow = function () {
+            this.$checkList.empty();
+        }
+
+        App.CheckList = CheckList;
         window.App = App;
     }
 )(window)

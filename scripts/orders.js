@@ -6,37 +6,69 @@
             this.data = {};
         }
 
-        Orders.prototype.add = function (email, order) {
-            let result = this.data[email];
-            if (!result) {
-                this.data[email] = order;
-                return true;
-            }
-            return false;
+        function createPromise(value) {
+            return new Promise(function (resolve, reject) {
+                resolve(value)
+            })
         }
 
-        Orders.prototype.get = function (email) {
-            let result = this.data[email];
-            if (result) {
-                return result;
+        Orders.prototype.add = function (email, order) {
+            if (this.data[email]) {
+                return createPromise(false);
             }
-            return "";
+            this.data[email] = order;
+            return createPromise(true);
         }
         Orders.prototype.remove = function (email) {
-            let result = this.data[email];
-            if (result) {
+            if (this.data[email]) {
                 delete this.data[email];
-                return true;
+                return createPromise(true);
             }
-            return false;
+            return createPromise(false);
         }
         Orders.prototype.getAll = function () {
-            return Object.values(this.data);
+            return createPromise(Object.values(this.data));
+        }
+        Orders.prototype.get = function (email) {
+            return this.data[email];
+        }
+        Orders.prototype.removeAll = function () {
+            this.data = {};
+            return createPromise(true);
         }
 
-        Orders.prototype.removeAll = function(){
-            return this.data = {};
-        }
+        //
+        // Orders.prototype.add = function (email, order) {
+        //     let result = this.data[email];
+        //     if (!result) {
+        //         this.data[email] = order;
+        //         return true;
+        //     }
+        //     return false;
+        // }
+        //
+        // Orders.prototype.get = function (email) {
+        //     let result = this.data[email];
+        //     if (result) {
+        //         return result;
+        //     }
+        //     return "";
+        // }
+        // Orders.prototype.remove = function (email) {
+        //     let result = this.data[email];
+        //     if (result) {
+        //         delete this.data[email];
+        //         return true;
+        //     }
+        //     return false;
+        // }
+        // Orders.prototype.getAll = function () {
+        //     return Object.values(this.data);
+        // }
+        //
+        // Orders.prototype.removeAll = function(){
+        //     return this.data = {};
+        // }
         App.Orders = Orders;
         window.App = App;
     }
